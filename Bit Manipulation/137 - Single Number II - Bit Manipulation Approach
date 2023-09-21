@@ -1,0 +1,21 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+        int ans = 0;
+        for(int k = 0; k < 32; k++)
+        {
+            int setBitCount = 0;
+            for(int n : nums)
+            {
+                if((n & (1 << k)) != 0)
+                {
+                    setBitCount++;
+                }
+            }
+            if(setBitCount % 3 != 0)
+            {
+                ans = ans | (1 << k);
+            }
+        }
+        return ans;
+    }
+}
